@@ -36,33 +36,37 @@ const Home = () => {
   let content;
   if (Object.keys(data).length === 0 && error === "") {
     content = (
-      <div>
-        <h2>Welcome to weather App</h2>
+      <div className="text-white text-center h-screen mt-[5rem]">
+        <h2 className="text-3xl font-bold mb-4">Welcome to weather App</h2>
+        <p className="text-xl font-thin">
+          {" "}
+          Enter a city name to get the weather forecast
+        </p>
       </div>
     );
   } else if (error !== "") {
     content = (
-      <div>
-        <p>City not found</p>
-        <p>Enter a valid City </p>
+      <div className="text-white text-center h-screen mt-[5rem]">
+        <p className="text-3xl font-bold mb-4">City not found</p>
+        <p className="text-xl font-thin">Enter a valid City </p>
       </div>
     );
   } else {
     content = (
       <>
-        <div>
+        <div className="flex md:flex-row flex-col p-12 item-center justify-between">
           <CurrentWeather data={data} />
           <WeekForecast data={data} />
         </div>
         <div>
-          <WeatherDetails />
+          <WeatherDetails data={data} />
         </div>
       </>
     );
   }
 
   return (
-    <div className="bg-cover bg-gradient-to-r from-blue-500 to-blue-300 h-screen">
+    <div className="bg-cover bg-gradient-to-r from-blue-500 to-blue-300 h-fit">
       <div className="bg-white/25 w-full flex flex-col h-fit">
         {/* Input and Logo */}
         <div className="flex flex-col justify-between items-center p-12 md:flex-row">
