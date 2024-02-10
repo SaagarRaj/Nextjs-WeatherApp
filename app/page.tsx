@@ -55,10 +55,13 @@ const Home = () => {
     content = (
       <>
         <div className="flex md:flex-row flex-col p-12 item-center justify-between">
+          {/*//@ts-ignore*/}
           <CurrentWeather data={data} />
+          {/*//@ts-ignore*/}
           <WeekForecast data={data} />
         </div>
         <div>
+          {/*//@ts-ignore*/}
           <WeatherDetails data={data} />
         </div>
       </>
