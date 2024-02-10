@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-
+require("dotenv").config();
 import Input from "./component/Input";
 import CurrentWeather from "./component/CurrentWeather";
 import WeatherDetails from "./component/WeatherDetails";
@@ -10,12 +10,14 @@ const Home = () => {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
-  const Url: string = "1d76c28c9c7b4088a6f35632241002";
+  const Url = process.env.WEATHER_API_KEY;
+
   const url: string = `http://api.weatherapi.com/v1/forecast.json?key=${Url}&q=${location}&days=7&aqi=yes&alerts=yes`;
 
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      console.log(process.env.WEATHER_API_KEY);
       try {
         const response = await fetch(url);
         if (!response.ok) {
