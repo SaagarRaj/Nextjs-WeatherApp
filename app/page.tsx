@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 
 import Input from "./component/Input";
+import CurrentWeather from "./component/CurrentWeather";
+import WeatherDetails from "./component/WeatherDetails";
+import WeekForecast from "./component/WeekForecast";
 
 const Home = () => {
   const [data, setData] = useState({});
@@ -19,6 +22,7 @@ const Home = () => {
           throw new Error();
         }
         const data = await response.json();
+        console.log(data);
         setData(data);
         setLocation("");
         setError("");
@@ -28,6 +32,34 @@ const Home = () => {
       }
     }
   };
+
+  let content;
+  if (Object.keys(data).length === 0 && error === "") {
+    content = (
+      <div>
+        <h2>Welcome to weather App</h2>
+      </div>
+    );
+  } else if (error !== "") {
+    content = (
+      <div>
+        <p>City not found</p>
+        <p>Enter a valid City </p>
+      </div>
+    );
+  } else {
+    content = (
+      <>
+        <div>
+          <CurrentWeather data={data} />
+          <WeekForecast data={data} />
+        </div>
+        <div>
+          <WeatherDetails />
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="bg-cover bg-gradient-to-r from-blue-500 to-blue-300 h-screen">
@@ -39,7 +71,7 @@ const Home = () => {
             Weather App.
           </h1>
         </div>
-        {data.current ? <div>{data.current.temp_c}</div> : null}
+        {content}
       </div>
     </div>
   );
