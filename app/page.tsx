@@ -10,21 +10,21 @@ const Home = () => {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
-  const Url = process.env.NEXT_PUBLIC_WEATHER_API_KEY!;
-
-  const url: string = `https://api.weatherapi.com/v1/forecast.json?key=${Url}&q=${location}&days=7&aqi=yes&alerts=yes`;
+  const env = process.env.NEXT_PUBLIC_WEATHER_API_KEY!;
+  const url: string = `http://api.weatherapi.com/v1/forecast.json?key=${env}&q=${location}&days=7&aqi=yes&alerts=yes`;
 
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-
+      console.log(env);
+      //console.log(process.env.NEXT_PUBLIC_WEATHER_API_KEY);
       try {
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error();
         }
         const data = await response.json();
-        //console.log(data);
+        console.log(data);
         setData(data);
         setLocation("");
         setError("");

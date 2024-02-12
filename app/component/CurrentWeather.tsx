@@ -29,9 +29,9 @@ const CurrentWeather = ({ data }: currentProps) => {
         </div>
 
         {weatherIcon && (
-          <div>
+          <div className="mx-5">
             <img
-              className="w-[50px] object-cover"
+              className="w-[75px]  object-cover"
               src={weatherIcon}
               alt={data.current.condition.text}
             />{" "}
