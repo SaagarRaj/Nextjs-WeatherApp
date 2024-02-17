@@ -16,7 +16,7 @@ const Home = () => {
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      console.log(env);
+
       //console.log(process.env.NEXT_PUBLIC_WEATHER_API_KEY);
       try {
         const response = await fetch(url);
