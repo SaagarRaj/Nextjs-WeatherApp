@@ -56,13 +56,13 @@ const Home = () => {
   } else {
     content = (
       <>
-        <div className="flex md:flex-row flex-col p-12 item-center h-full justify-between">
+        <div className="flex md:flex-row flex-col p-12 item-center  justify-between">
           {/*//@ts-ignore*/}
           <CurrentWeather data={data} />
           {/*//@ts-ignore*/}
           <WeekForecast data={data} />
         </div>
-        <div className="h-[100vh]">
+        <div className="h-full">
           {/*//@ts-ignore*/}
           <WeatherDetails data={data} />
         </div>
@@ -71,7 +71,7 @@ const Home = () => {
   }
 
   return (
-    <div className="bg-cover bg-gradient-to-r from-blue-500 to-blue-300">
+    <div className="bg-cover bg-gradient-to-r from-blue-500 to-blue-300 h-full">
       <div className="bg-white/25 w-full flex flex-col">
         {/* Input and Logo */}
         <div className="flex flex-col justify-between items-center p-12 md:flex-row">
