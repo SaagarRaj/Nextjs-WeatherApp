@@ -71,7 +71,7 @@ const Home = () => {
   }
 
   return (
-    <div className="bg-cover bg-gradient-to-r from-blue-500 to-blue-300 h-full">
+    <div className="bg-cover">
       <div className="bg-white/25 w-full flex flex-col">
         {/* Input and Logo */}
         <div className="flex flex-col justify-between items-center p-12 md:flex-row">
